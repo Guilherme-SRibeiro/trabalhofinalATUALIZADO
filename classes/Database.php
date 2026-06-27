@@ -1,7 +1,7 @@
 <?php 
 class Database { 
     private $host = "localhost"; 
-    private $db_name = "techBanco"; 
+    private $db_name = "portalTech"; 
     private $username = "root";
     private $password = ""; 
     public $conn; 
