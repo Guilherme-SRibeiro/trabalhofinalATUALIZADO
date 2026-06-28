@@ -3,9 +3,9 @@ session_start();
 require_once 'config/conexao.php';
 require_once 'config/funcoes.php';
 
-if (usuarioLogado()) { header('Location: dashboard.php'); exit; }
+if (usuarioLogado()) { header('Location: dashboard/dashboard.php'); exit; }
 
-$erro = '';
+$erro  = '';
 $aviso = $_GET['aviso'] ?? '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($u && password_verify($senha, $u['senha'])) {
             $_SESSION['usuario_id']   = $u['id'];
             $_SESSION['usuario_nome'] = $u['nome'];
-            header('Location: dashboard.php');
+            header('Location: dashboard/dashboard.php');
             exit;
         } else {
             $erro = 'E-mail ou senha incorretos.';
@@ -37,33 +37,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrar — Portal Tech</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
 </head>
 <body>
 
 <header>
     <div class="header-inner">
-        <a href="index.php" class="logo">&lt;<span>portal</span>_tech/&gt;</a>
+        <div class="logo"><a href="index.php">&lt;<span>portal</span>_tech/&gt;</a></div>
         <div class="header-actions">
             <a href="index.php" class="btn btn-ghost btn-sm">← Início</a>
         </div>
     </div>
 </header>
 
-<div class="form-wrap">
-    <div class="form-card">
-        <h2>Entrar</h2>
-        <p class="form-sub">Acesse o painel para publicar notícias.</p>
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-header">
+            <div class="auth-eyebrow">// acesso ao portal</div>
+            <h1>Entrar</h1>
+            <p>Acesse o painel para publicar notícias.</p>
+        </div>
 
         <?php if ($aviso === 'acesso_restrito'): ?>
             <div class="alert alert-info">Você precisa estar logado para acessar essa área.</div>
         <?php endif; ?>
 
         <?php if ($erro): ?>
-            <div class="alert alert-error"><?= htmlspecialchars($erro) ?></div>
+            <div class="alert alert-erro"><?= htmlspecialchars($erro) ?></div>
         <?php endif; ?>
 
-        <form method="POST">
+        <form method="POST" class="auth-form">
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="email" id="email" name="email" required placeholder="seu@email.com">
@@ -72,12 +75,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="senha">Senha</label>
                 <input type="password" id="senha" name="senha" required placeholder="••••••••">
             </div>
-            <div class="form-actions">
-                <button type="submit" class="btn btn-primary" style="width:100%;">Entrar</button>
-            </div>
+            <button type="submit" class="btn btn-primary btn-full">Entrar</button>
         </form>
 
-        <p class="form-footer">Não tem conta? <a href="cadastro.php">Criar conta</a></p>
+        <p class="auth-footer">Não tem conta? <a href="cadastro.php">Criar conta</a></p>
     </div>
 </div>
 

@@ -7,13 +7,13 @@ class Usuario {
     public function __construct($db) {
         $this->conn = $db;
     }
-    public function registrar($nome, $sexo, $fone, $email, $senha) {
-        $query = "INSERT INTO " . $this->table_name . " (nome, sexo, fone, email, senha) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $this->conn->prepare($query);
-        $hashed_password = password_hash($senha, PASSWORD_BCRYPT);
-        $stmt->execute([$nome, $sexo, $fone, $email, $hashed_password]);
-        return $stmt;
-    }
+    public function registrar($nome, $sexo, $email, $senha) {
+    $query = "INSERT INTO " . $this->table_name . " (nome, sexo, email, senha) VALUES (?, ?, ?, ?)";
+    $stmt = $this->conn->prepare($query);
+    $hashed_password = password_hash($senha, PASSWORD_BCRYPT);
+    $stmt->execute([$nome, $sexo, $email, $hashed_password]);
+    return $stmt;
+}
 
 
     public function login($email, $senha) {

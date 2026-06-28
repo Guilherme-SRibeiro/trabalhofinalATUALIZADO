@@ -36,11 +36,11 @@ $result_likes = $conn->query($sql_likes);
             <div class="logo">&lt;<span>portal</span>_tech/&gt;</div>
             <nav>
                 <a href="index.php">Início</a>
-            </nav>
+            </nav>  
             <div class="header-actions">
                 <?php if (usuarioLogado()): ?>
-                    <a href="dashboard.php" class="btn btn-ghost btn-sm">Painel</a>
-                    <a href="nova_noticia.php" class="btn btn-primary btn-sm">+ Publicar</a>
+                    <a href="dashboard/dashboard.php" class="btn btn-ghost btn-sm">Painel</a>
+                    <a href="dashboard/nova_noticia.php" class="btn btn-primary btn-sm">+ Publicar</a>  
                 <?php else: ?>
                     <a href="login.php" class="btn btn-ghost btn-sm">Entrar</a>
                     <a href="cadastro.php" class="btn btn-primary btn-sm">Cadastrar</a>

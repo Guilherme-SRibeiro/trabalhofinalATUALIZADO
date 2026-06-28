@@ -1,7 +1,7 @@
 <?php
 $host = "localhost";
 $user = "root";
-$pass = "root";
+$pass = "";
 $db = "portalTech";
 
 $conn = new mysqli($host, $user, $pass, $db);
