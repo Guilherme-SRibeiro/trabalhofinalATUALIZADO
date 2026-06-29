@@ -33,11 +33,10 @@ Portal Tech é um sistema de notícias desenvolvido em **PHP**, utilizando **Pro
 
 ## 🛠 Tecnologias Utilizadas
 
-- PHP 8+
-- HTML5
-- CSS3
+- PHP
+- HTML
+- CSS
 - MySQL
-- PDO
 - Programação Orientada a Objetos (POO)
 
 ---
